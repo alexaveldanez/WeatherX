@@ -29,8 +29,17 @@ body {
         -webkit-text-fill-color: white;
         -webkit-text-stroke-width: 1.5px;
     }
+    
+    #topCard{
+        margin-bottom: 12px;
+    }
+
+    #middleSpace {
+        width: 12px;
+    }
 
     #wForecast {
         color: black;
         text-decoration: none;
     }
+
