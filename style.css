@@ -1,0 +1,47 @@
+body {
+    height: 100%;
+    background-color: skyblue;
+}
+
+:root {
+
+    --Colors-darkGrey-rgba: rgba(33, 33, 33, 1);
+    --Colors-grayBlue-rgba: rgba(44, 66, 81, .5);
+    --Colors-darkBlue-rgba: rgba(0, 115, 171, .5);
+    --Colors-Orange-rgba: rgba(247, 148, 29, .5);
+    --Colors-ltGrey-rgba: rgba(223, 227, 228, .5);
+    --Colors-Black-rgba: rgba(0, 0, 0, 1);
+}
+
+.wBackground {
+    height: 100vh;
+    min-height: 500px;
+    background-image: url(/images/clouds.jpg); }
+
+    /* .main-column {
+        border: solid 1px red;
+    }
+
+    .container {
+        border: solid 1px red;
+    }
+
+    .row {
+        border: solid 1px red;
+    } */
+    #wMain {
+        font-size: 25px;
+        resize: vertical;
+    }
+
+    #wTitle {
+        font-weight: 700;
+        font-size: 2.0em;
+        -webkit-text-fill-color: white;
+        -webkit-text-stroke-width: 1.5px;
+    }
+
+    #wForecast {
+        color: black;
+        text-decoration: none;
+    }
