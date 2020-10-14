@@ -18,17 +18,6 @@ body {
     min-height: 500px;
     background-image: url(/images/clouds.jpg); }
 
-    /* .main-column {
-        border: solid 1px red;
-    }
-
-    .container {
-        border: solid 1px red;
-    }
-
-    .row {
-        border: solid 1px red;
-    } */
     #wMain {
         font-size: 25px;
         resize: vertical;
