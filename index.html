@@ -10,6 +10,7 @@
 
     <script src="keys.js"></script>
     <script src="weather.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -24,7 +25,7 @@
                     </div>
                 </div>
                 <div class="row" id="topCard">
-                    <div class="card w-100">
+                    <div class="card w-100" id="wCurrentCard">
                         <div class="card-body">
                             <div id="wCurrent" class="col">
                                 <div class="row">
@@ -37,7 +38,7 @@
                                         <div class="row col d-md-inline-block" id="currentTemp">75&deg;</div>
                                     </div>
                                     <div class="col-sm">
-                                        Sunny Weather icon
+                                        <img src="/images/SunnyDay.png">
                                     </div>
                                 </div>
                         </div>
@@ -48,7 +49,7 @@
                     <div id="wConditions" class="card col-md">
                         <div class="card-body">
                             <div class="row">
-                                <div id="percipitation" class="col-md">Percipitation 98%</div>
+                                <div id="precipitation" class="col-md">Precipitation 98%</div>
                             </div>
                             <div class="row">
                                 <div id="humidity" class="col-md">Humidity</div>
@@ -88,7 +89,7 @@
                             <a href="https://openweathermap.org/" target="_blank">Powered by Open Weather</a>
                         </div>
                         <div class="col">
-                            <a href="https://alexaveldanez-4050a.web.app/" target="_blank">Created by Alex Aveldanez</a>
+                            <a href="https://alexaveldanez-4050a.web.app/" target="_blank">Coding by Alex Aveldanez</a>
                         </div>
                     </div>
                 </div>

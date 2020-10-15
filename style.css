@@ -8,7 +8,6 @@ body {
     --Colors-darkGrey-rgba: rgba(33, 33, 33, 1);
     --Colors-grayBlue-rgba: rgba(44, 66, 81, .5);
     --Colors-darkBlue-rgba: rgba(0, 115, 171, .5);
-    --Colors-Orange-rgba: rgba(247, 148, 29, .5);
     --Colors-ltGrey-rgba: rgba(223, 227, 228, .5);
     --Colors-Black-rgba: rgba(0, 0, 0, 1);
 }
@@ -16,30 +15,65 @@ body {
 .wBackground {
     height: 100vh;
     min-height: 500px;
-    background-image: url(/images/clouds.jpg); }
+    background-image: url(/images/clouds.jpg) ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
     #wMain {
         font-size: 25px;
+        margin-top: 10px;
         resize: vertical;
     }
 
     #wTitle {
         font-weight: 700;
-        font-size: 2.0em;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 2.2em;
         -webkit-text-fill-color: white;
-        -webkit-text-stroke-width: 1.5px;
+        -webkit-text-stroke-width: 0.5px;
     }
+
     
-    #topCard{
+    #topCard {
         margin-bottom: 12px;
+    }
+
+    #wCurrentCard {
+        color: white;
+        background-color: var(--Colors-darkBlue-rgba);
+    }
+
+    #location{
+        font-weight: bolder;
+    }
+
+    #currentTemp {
+        font-size: 5em;
+
     }
 
     #middleSpace {
         width: 12px;
     }
 
+    #wConditions {
+        color: white;
+        background-color: darkblue;
+    }
+
     #wForecast {
         color: black;
         text-decoration: none;
+        background-color: darkblue;
     }
+
+    #footer div a {
+        font-size: 18px;
+        color: var(--Colors-darkGrey-rgba);
+    }
+
+
 
