@@ -48,8 +48,10 @@ function getAllWeather(position){
     longitude = position.coords.longitude;
 
     // getCurrentWeather(latitude, longitude);
-    getForecast(latitude, longitude);
+    // getForecast(latitude, longitude);
 }
+
+
 
 
 
