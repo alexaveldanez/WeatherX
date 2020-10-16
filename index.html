@@ -6,10 +6,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="style.css">
 
-    <script src="keys.js"></script>
-    <script src="weather.js"></script>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -30,12 +28,11 @@
                             <div id="wCurrent" class="col">
                                 <div class="row">
                                     <div id="wTemp" class="col-sm">
-                                        <div id="location" class="row col d-md-inline-block">
-                                            San Diego, CA
-                                        </div>
-                                        <div class="row col d-md-inline-block" id="dayTime">Monday, 12:00PM</div>
-                                        <div class="row col d-md-inline-block" id="summary">Mostly Sunny</div>
                                         <div class="row col d-md-inline-block" id="currentTemp">75&deg;</div>
+                                        <div id="location" class="row col d-md-inline-block">San Diego, CA</div>
+                                        <div class="row col d-md-inline-block" id="date">Monday</div>
+                                        <!-- <div class="row col d-md-inline-block" id="time">12:00PM</div> -->
+                                        <div class="row col d-md-inline-block" id="summary">Mostly Sunny</div>
                                     </div>
                                     <div class="col-sm">
                                         <img src="/images/SunnyDay.png">
@@ -49,16 +46,13 @@
                     <div id="wConditions" class="card col-md">
                         <div class="card-body">
                             <div class="row">
-                                <div id="precipitation" class="col-md">Precipitation 98%</div>
+                                <div id="feelsLike" class="col-md">Feels like 70</div>
                             </div>
                             <div class="row">
                                 <div id="humidity" class="col-md">Humidity</div>
                             </div>
                             <div class="row">
                                 <div id="winds" class="col-md">Winds</div>
-                            </div>
-                            <div class="row">
-                                <div id="warnings" class="col-md">Warnings</div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +73,13 @@
 
                                 </table>
                             </div>
+                            <div class="tab-pane container fade" id="weekly">
+                                <table id="weeklyForecast" width="100%">
+
+                                </table>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             <div class="row">
@@ -98,7 +98,8 @@
         </div>
      </div>
 
-
+<script src="keys.js"></script>
+<script src="weather.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
 </script>

@@ -1,58 +1,49 @@
-// SELECT ELEMENTS
-let locationValue = document.getElementById("location");
-let dayTimeValue = document.getElementById("dayTime");
-let summaryValue = document.getElementById("summary");
-let currentTempValue = document.getElementById("currentTemp");
-let precipitationValue = document.getElementById("precipitation");
-let humidityValue = document.getElementById("humidity");
-let windsValue = document.getElementById("winds");
-let warningsValue = document.getElementById("warnings");
+var locationElement = document.querySelector("#location");
+let dateElement = document.querySelector("#date");
+let timeElement = document.querySelector("#time");
+let summaryElement = document.querySelector("#summary");
+let currentTempElement = document.querySelector("#currentTemp");
+let feelsLikeElement = document.querySelector("#feelsLike");
+let humidityElement = document.querySelector("#humidity");
+let windsElement = document.querySelector("#winds");
 
-// API KEY - Figure out how to hide it in keys.js
-const key = "";
 
-// getCurrentLocation
-navigator.geolocation.getCurrentPosition(getAllWeather, showError);
+let todaysDate = new Date().toDateString();
+let currentTime = new Date().toLocaleTimeString();
+dateElement.innerHTML = `${todaysDate} ${currentTime}`;
 
-// Set user's position
+if('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(getAllWeather, showError);
+  } else {
+    alert("Location is not available");
+  }
 
 function showError(error){
-    console.log(error.message);
+    alert(error.message);
 }
 
-// get CurrentWeather
-function getCurrentWeather(latitude, longitude) {
-    let currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${key}`;
-    console.log(currentWeatherUrl);
-
-    fetch(currentWeatherUrl)
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
-}
-
-// get Forecast
-function getForecast(latitude, longitude) {
-    let currentWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=imperial&appid=${key}`;
-    console.log(currentWeatherUrl);
-
-    fetch(currentWeatherUrl)
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
-}
-
-// Invoke functions
 function getAllWeather(position){
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-
-    // getCurrentWeather(latitude, longitude);
-    // getForecast(latitude, longitude);
+    getCurrentWeather(latitude, longitude);
 }
 
 
-
-
+// get CurrentWeather
+function getCurrentWeather(latitude, longitude) {
+    let currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${key}`
+    fetch(currentWeatherUrl)
+    .then(response => response.json())
+    .then(data => {
+        locationElement.innerHTML = data.name;
+        summaryElement.innerHTML = data.weather[0].description;
+        currentTempElement.innerHTML = `${Math.trunc(data.main.temp)}°`;
+        feelsLikeElement.innerHTML = `Feels like ${Math.trunc(data.main.feels_like)}°`;
+        humidityElement.innerHTML = `Humidity ${data.main.humidity}%`;
+        windsElement.innerHTML = `Wind ${Math.trunc(data.wind.speed)}mph`;
+        console.log(data);
+    })
+    .catch(error => alert(error));
+}
 
 
