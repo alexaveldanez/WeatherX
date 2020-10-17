@@ -6,7 +6,7 @@ let currentTempElement = document.querySelector("#currentTemp");
 let feelsLikeElement = document.querySelector("#feelsLike");
 let humidityElement = document.querySelector("#humidity");
 let windsElement = document.querySelector("#winds");
-let dailyForecastElement = document.querySelector("#dailyForecast");
+let hourlyForecastElement = document.querySelector("#hourlyForecast");
 let weeklyForecastElement = document.querySelector("#weeklyForecast");
 
 let todaysDate = new Date().toDateString();
@@ -26,8 +26,9 @@ function showError(error){
 function getAllWeather(position){
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-    getCurrentWeather(latitude, longitude); 
-    getForecast(latitude, longitude);
+    // getCurrentWeather(latitude, longitude); 
+    // getForecast(latitude, longitude);
+    // getHourlyForecast(latitude, longitude);
 }
 
 
@@ -62,23 +63,34 @@ function getForecast(latitude, longitude) {
                 fiveDayForecastData.push(forecastData[i]);
             }
         }
-        console.log(fiveDayForecastData);
         weeklyForecastElement.innerHTML = renderWeeklyForecast(fiveDayForecastData);
+    })
+    .catch(error => alert(error));
+}
+
+function getHourlyForecast(latitude, longitude) {
+    let hourlyWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${key}`;
+    let hourlyForecastData = [];
+
+    fetch(hourlyWeatherUrl)
+    .then(response => response.json())
+    .then(data => {
+        hourlyForecastData = data.hourly;
+        hourlyForecastElement.innerHTML = renderHourlyForecast(hourlyForecastData); 
     })
     .catch(error => alert(error));
 }
 
 function renderWeeklyForecast(data) {
     let resultsHTML = "<tr><th>Day</th><th>Conditions</th><th>Hi</th><th>Lo</th></tr>";
-    console.log(data);
     for (i = 0; i < data.length; i++) {
 
         let date = new Date(data[i].dt * 1000);
         let days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
         let dayName = days[date.getDay()];
         let summary = data[i].weather[0].description;
-        let tempHigh = data[i].main.temp_max;
-        let tempLow = data[i].main.temp_min;
+        let tempHigh = `${Math.round(data[i].main.temp_max)}°`;
+        let tempLow = `${Math.round(data[i].main.temp_min)}°`;
 
         resultsHTML += renderRow(dayName, summary, tempHigh, tempLow);
     }
@@ -86,8 +98,39 @@ function renderWeeklyForecast(data) {
     return resultsHTML;
 }
 
-function renderRow(dayName, summary, tempHigh, tempLow) {
-    return `<tr><td>${dayName}</td><td>${summary}</td><td>${Math.round(tempHigh)}°</td><td>${Math.round(tempLow)}°</td></tr>`
+function renderHourlyForecast(data) {
+    let resultsHTML = `<tr><th>Time</th><th>Conditions</th><th>Temp</th><th>Humidity</th></tr>`;
+ 
+    for (i = 0; i < 5; i++) {
+        
+        let time = new Date(data[i].dt * 1000);
+        let summary = "";
+        let temp = 0;
+        let timeValue;
+
+        let hours = time.getHours();
+        if (hours > 0 && hours <= 12) {
+            timeValue = "" + hours;
+        } else if (hours > 12) {
+            timeValue = "" + (hours - 12);
+        } else if (hours == 0) {
+            timeValue = "12";
+        }
+        timeValue += (hours >= 12) ? " PM" : " AM";
+
+        summary = data[i].weather[0].description;
+        temp = `${Math.round(data[i].temp)}°`;
+        let humidity = `${Math.round(data[i].humidity)}%`;
+        
+        resultsHTML += renderRow(timeValue, summary, temp, humidity);
+    }
+    return resultsHTML;
 }
+
+
+function renderRow(dayTime, summary, temp, column4Value) {
+    return `<tr><td>${dayTime}</td><td>${summary}</td><td>${temp}</td><td>${column4Value}</td></tr>`
+}
+
 
 
