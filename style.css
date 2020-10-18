@@ -46,8 +46,10 @@ body {
         background-color: var(--Colors-transparentGray-rgba);
     }
 
-    img {
-        height: 450px;
+    #weatherIcon {
+        max-width: 100%;
+        height: auto;
+    
     }
 
     #location{
@@ -93,13 +95,52 @@ body {
         color: white;
     }
 
-    #nightTheme {
-        background-color: var(--Colors-grayBlue-rgba);
-    }
-
     a.nav-link {
         color: white;
     }
+
+@media (min-width: 576px) {
+    #wTitle {
+        font-size: 1.5em;
+    }
+
+    #wCurrent,
+    #wConditions {
+        font-size: 1.5em;
+    }
+}
+
+
+@media (min-width: 768px) {
+    #wTitle {
+        font-size: 2em;
+    }
+
+    #wCurrent,
+    #wConditions {
+        font-size: 1.5em;
+    }
+}
+
+
+@media (min-width: 992px) {
+    #wTitle {
+        font-size: 2em;
+    }
+
+    #wCurrent,
+    #wForcast {
+        font-size: 1.5em;
+    }
+
+
+}
+
+@media (min-width :992px) {
+    #wBackground {
+        font-size: 1em;
+    }
+}
 
 
 

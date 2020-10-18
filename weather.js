@@ -43,7 +43,6 @@ function getCurrentWeather(latitude, longitude) {
     .then(response => response.json())
     .then(data => {
         let icon = data.weather[0].icon;
-        // setTheme(icon);
         document.body.style.backgroundImage = getBackground(icon);
         locationElement.innerHTML = data.name;
         weatherIconElement.src = getIcon(icon);
