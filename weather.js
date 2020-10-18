@@ -1,17 +1,22 @@
-var locationElement = document.querySelector("#location");
+let locationElement = document.querySelector("#location");
 let dateElement = document.querySelector("#date");
 let timeElement = document.querySelector("#time");
 let summaryElement = document.querySelector("#summary");
 let currentTempElement = document.querySelector("#currentTemp");
+let weatherIconElement = document.querySelector("#weatherIcon");
 let feelsLikeElement = document.querySelector("#feelsLike");
 let humidityElement = document.querySelector("#humidity");
 let windsElement = document.querySelector("#winds");
 let hourlyForecastElement = document.querySelector("#hourlyForecast");
 let weeklyForecastElement = document.querySelector("#weeklyForecast");
+let currentTempCard = document.querySelector("#wCurrentCard");
+let wConditionsElement = document.querySelector("#wConditions");
+let wForecastElement = document.querySelector("#wForecast");
 
 let todaysDate = new Date().toDateString();
 let currentTime = new Date().toLocaleTimeString();
 dateElement.innerHTML = `${todaysDate} ${currentTime}`;
+
 
 if('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(getAllWeather, showError);
@@ -26,9 +31,9 @@ function showError(error){
 function getAllWeather(position){
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-    // getCurrentWeather(latitude, longitude); 
-    // getForecast(latitude, longitude);
-    // getHourlyForecast(latitude, longitude);
+    getCurrentWeather(latitude, longitude); 
+    getForecast(latitude, longitude);
+    getHourlyForecast(latitude, longitude);
 }
 
 
@@ -37,7 +42,11 @@ function getCurrentWeather(latitude, longitude) {
     fetch(currentWeatherUrl)
     .then(response => response.json())
     .then(data => {
+        let icon = data.weather[0].icon;
+        // setTheme(icon);
+        document.body.style.backgroundImage = getBackground(icon);
         locationElement.innerHTML = data.name;
+        weatherIconElement.src = getIcon(icon);
         summaryElement.innerHTML = data.weather[0].description;
         currentTempElement.innerHTML = `${Math.round(data.main.temp)}°`;
         feelsLikeElement.innerHTML = `Feels like ${Math.round(data.main.feels_like)}°`;
@@ -131,6 +140,89 @@ function renderHourlyForecast(data) {
 function renderRow(dayTime, summary, temp, column4Value) {
     return `<tr><td>${dayTime}</td><td>${summary}</td><td>${temp}</td><td>${column4Value}</td></tr>`
 }
+
+function getIcon(icon) {
+    let selectedIcon;
+    switch (icon) {
+      case '01d':
+        selectedIcon = "images/SunnyDay.png"
+        break;
+      case '01n':
+        selectedIcon = "images/ClearMoon.png"
+        break;
+      case '02d':
+      case '03d':
+      case '04d':
+        selectedIcon = "images/MostlySunny.png"
+        break;
+      case '02n':
+      case '03n':
+      case '04n':
+        selectedIcon = "images/CloudyMoon.png"
+        break;
+      case '09d':
+      case '09n':
+      case '10d':
+      case '10n':
+        selectedIcon = "images/rain.png"
+        break;
+      case '11d':
+      case '11n':
+        selectedIcon = "images/Thunder.png"
+        break;
+      case '13d':
+      case '13n':
+        selectedIcon = "images/snow.png"
+        break;
+      case '50d':
+      case '50n':
+        selectedIcon = "images/fog.png"
+        break;
+      default:
+        selectedIcon = "images/SunnyDay.png"
+    }
+    return selectedIcon;
+  }
+
+  function getBackground(icon) {
+    let background;
+    switch (icon) {
+      case '01d':
+      case '02d':
+      case '03d':
+      case '04d':
+      case '09d':
+      case '10d':
+      case '11d':
+      case '13d':
+      case '50d':
+        background = "url('/images/Day.jpg')";
+        currentTempCard.id = "wCurrentCard";
+        wConditionsElement.id = "wConditions";
+        wForecastElement.id = "wForecast";
+        break;
+      case '01n':
+      case '02n':
+      case '03n':
+      case '04n':
+      case '09n':
+      case '10n':
+      case '11n':
+      case '13n':
+      case '50n':
+        background = "url('/images/Night.jpg')";
+        currentTempCard.id = "wCurrentCardNight";
+        wConditionsElement.id = "wConditionsNight";
+        wForecastElement.id = "wForecastNight";
+        break;
+      default:
+        background = "url(/images/Day.png);"
+        currentTempCard.id = "wCurrentCard";
+        wConditionsElement.id = "wConditions";
+        wForecastElement.id = "wForecast";
+    }
+    return background;
+  }
 
 
 

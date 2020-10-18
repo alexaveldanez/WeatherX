@@ -23,19 +23,18 @@
                     </div>
                 </div>
                 <div class="row" id="topCard">
-                    <div class="card w-100" id="wCurrentCard">
+                    <div class="card w-100 weather-cards" id="wCurrentCard">
                         <div class="card-body">
                             <div id="wCurrent" class="col">
                                 <div class="row">
                                     <div id="wTemp" class="col-sm">
-                                        <div class="row col d-md-inline-block" id="currentTemp">75&deg;</div>
-                                        <div id="location" class="row col d-md-inline-block">San Diego, CA</div>
-                                        <div class="row col d-md-inline-block" id="date">Monday</div>
-                                        <!-- <div class="row col d-md-inline-block" id="time">12:00PM</div> -->
-                                        <div class="row col d-md-inline-block" id="summary">Mostly Sunny</div>
+                                        <div class="row col d-md-inline-block" id="currentTemp">--&deg;</div>
+                                        <div id="location" class="row col d-md-inline-block"></div>
+                                        <div class="row col d-md-inline-block" id="date"></div>
+                                        <div class="row col d-md-inline-block" id="summary"></div>
                                     </div>
                                     <div class="col-sm">
-                                        <img src="/images/SunnyDay.png">
+                                        <img id="weatherIcon" src="images/SunnyDay.png">
                                     </div>
                                 </div>
                         </div>
@@ -43,10 +42,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div id="wConditions" class="card col-md">
+                    <div id="wConditions" class="card col-md weather-cards">
                         <div class="card-body">
                             <div class="row">
-                                <div id="feelsLike" class="col-md">Feels like 70</div>
+                                <div id="feelsLike" class="col-md">Feels like --&deg;</div>
                             </div>
                             <div class="row">
                                 <div id="humidity" class="col-md">Humidity</div>
@@ -57,10 +56,10 @@
                         </div>
                     </div>
                     <div id="middleSpace"></div>
-                    <div id="wForecast" class="card col-md">
+                    <div id="wForecast" class="card col-md weather-cards">
                         <ul class="nav nav-tabs" id="forecastTabs">
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#daily">Hourly</a>
+                                <a class="nav-link" data-toggle="tab" href="#hourly">Hourly</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#weekly">5-Day</a>
@@ -89,7 +88,7 @@
                             <a href="https://openweathermap.org/" target="_blank">Powered by Open Weather</a>
                         </div>
                         <div class="col">
-                            <a href="https://alexaveldanez-4050a.web.app/" target="_blank">Coding by Alex Aveldanez</a>
+                            <a href="https://alexaveldanez-4050a.web.app/" target="_blank">Coding by Alex Aveldañez</a>
                         </div>
                     </div>
                 </div>

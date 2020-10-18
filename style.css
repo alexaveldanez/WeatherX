@@ -1,39 +1,34 @@
 body {
     height: 100%;
     background-color: skyblue;
+    background-image: url('/images/Day.jpg') ;
+    background-size: cover;
 }
 
 :root {
-
-    --Colors-darkGrey-rgba: rgba(33, 33, 33, 1);
-    --Colors-grayBlue-rgba: rgba(44, 66, 81, .5);
+    --Colors-transparentGray-rgba: rgba(45, 46, 46, 0.5);
     --Colors-darkBlue-rgba: rgba(0, 115, 171, .5);
-    --Colors-ltGrey-rgba: rgba(223, 227, 228, .5);
-    --Colors-Black-rgba: rgba(0, 0, 0, 1);
 }
 
 .wBackground {
     height: 100vh;
     min-height: 500px;
-    background-image: url(/images/clouds.jpg) ;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
 
+.weather-cards:hover {
+    box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+    transform: translateY(-3px) scale(1.0);
+  }
+
     #wMain {
-        font-size: 25px;
         margin-top: 10px;
-        resize: vertical;
     }
 
     #wTitle {
         font-weight: 700;
-        font-family: 'Roboto Mono', monospace;
-        font-size: 2.2em;
+        font-size: 2.5em;
         -webkit-text-fill-color: white;
-        -webkit-text-stroke-width: 0.5px;
+        -webkit-text-stroke-width: 1px;
     }
 
     
@@ -46,13 +41,21 @@ body {
         background-color: var(--Colors-darkBlue-rgba);
     }
 
+    #wCurrentCardNight {
+        color: white;
+        background-color: var(--Colors-transparentGray-rgba);
+    }
+
+    img {
+        height: 450px;
+    }
+
     #location{
         font-weight: bolder;
     }
 
     #currentTemp {
-        font-size: 5em;
-
+        font-size: 6em;
     }
 
     #middleSpace {
@@ -61,18 +64,41 @@ body {
 
     #wConditions {
         color: white;
-        background-color: darkblue;
+        background-color: var(--Colors-darkBlue-rgba);
+    }
+
+    #wConditionsNight {
+        color: white;
+        background-color: var(--Colors-transparentGray-rgba);
     }
 
     #wForecast {
-        color: black;
+        color: white;
         text-decoration: none;
-        background-color: darkblue;
+        background-color: var(--Colors-darkBlue-rgba);
+    }
+
+    #wForecastNight {
+        color: white;
+        text-decoration: none;
+        background-color: var(--Colors-transparentGray-rgba);
     }
 
     #footer div a {
-        font-size: 18px;
-        color: var(--Colors-darkGrey-rgba);
+        font-size: 1em;
+        color: white;
+    }
+
+    #footerNight div a {
+        color: white;
+    }
+
+    #nightTheme {
+        background-color: var(--Colors-grayBlue-rgba);
+    }
+
+    a.nav-link {
+        color: white;
     }
 
 
